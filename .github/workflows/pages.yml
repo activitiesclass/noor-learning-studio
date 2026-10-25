@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html admin.html admin.js _site/
-          cp -R extension content downloads docs _site/
+          cp -R extension content downloads docs assets _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
         with:
