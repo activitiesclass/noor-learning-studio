@@ -1,6 +1,6 @@
 {
   "name": "noor-learning-studio-extension",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "private": true,
   "description": "Noor lesson preparation library and Firefox extension",
   "scripts": {
