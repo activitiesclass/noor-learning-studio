@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "استوديو نور — مساعد التحاضير المتكامل",
+  "version": "1.9.1",
+  "description": "تحاضير جميع الوحدات والمناهج من حزمة موحدة، كل لقاء حصتان، والحفظ يدوي",
+  "permissions": [
+    "storage",
+    "https://lms.moe.gov.om/*"
+  ],
+  "background": {
+    "scripts": [
+      "core.js",
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "استوديو نور — التحاضير"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lms.moe.gov.om/teacher",
+        "https://lms.moe.gov.om/teacher/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "noor-preparations@local.teacher",
+      "strict_min_version": "115.0"
+    }
+  },
+  "content_security_policy": "script-src 'self'; object-src 'none'"
+}

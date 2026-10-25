@@ -1,0 +1,11 @@
+{
+  "name": "noor-learning-studio-extension",
+  "version": "1.9.1",
+  "private": true,
+  "description": "Noor lesson preparation library and Firefox extension",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="إدارة ومراجعة مكتبة تحاضير استوديو نور">
+  <title>إدارة مكتبة استوديو نور</title>
+  <style>
+    :root{--ink:#172b42;--muted:#64778b;--line:#dce6ef;--paper:#fff;--wash:#f3f7fa;--teal:#087f78;--blue:#0b6575;--amber:#986900;--red:#a33c38}
+    *{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink);font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.65}header{background:linear-gradient(120deg,#0b6575,#087f78);color:#fff;padding:24px max(20px,calc((100vw - 1180px)/2))}header a{color:white;text-decoration:none;font-weight:700}header h1{font-size:28px;margin:8px 0 0}header p{margin:4px 0 0;opacity:.9}.wrap{max-width:1180px;margin:auto;padding:24px 18px 50px}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}.btn{border:0;border-radius:10px;padding:10px 15px;font:inherit;font-weight:800;cursor:pointer;background:var(--teal);color:white}.btn.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn:disabled{opacity:.5;cursor:not-allowed}.file{display:inline-flex;align-items:center}.file input{position:absolute;inline-size:1px;block-size:1px;opacity:0}.status{margin:0 0 16px;padding:13px 16px;background:#e7f5f1;border:1px solid #c5e7df;border-radius:12px;color:#176b60}.status.error{background:#fff0ee;border-color:#f0cbc5;color:var(--red)}.notice{background:#fff9e9;border:1px solid #f0dfb4;border-radius:12px;padding:13px 16px;color:#624c1c;margin-bottom:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat,.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}.stat span{display:block;color:var(--muted);font-size:13px}.stat strong{font-size:26px}.filters{display:grid;grid-template-columns:220px 1fr;gap:10px;margin:18px 0}.filters input,.filters select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit}.courses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.course{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.course h2{font-size:18px;margin:0}.course p{margin:5px 0;color:var(--muted)}.course details{margin-top:8px;border-top:1px solid var(--line);padding-top:8px}.course summary{cursor:pointer;font-weight:700;color:var(--blue)}.course ul{margin:8px 0;padding-right:20px}.badge{display:inline-block;padding:3px 8px;border-radius:20px;background:#e6f4f1;color:#176b60;font-size:12px;font-weight:800}.badge.draft{background:#fff2d5;color:var(--amber)}.foot{margin-top:24px;color:var(--muted);font-size:13px}.hidden{display:none!important}@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.courses{grid-template-columns:1fr}.filters{grid-template-columns:1fr}header h1{font-size:23px}}
+  </style>
+</head>
+<body>
+  <header><a href="index.html">← صفحة الإضافة</a><h1>إدارة مكتبة التحاضير</h1><p>مراجعة المناهج والحزم وتبادل ملفات المحتوى قبل اعتمادها في المستودع.</p></header>
+  <main class="wrap">
+    <div class="toolbar"><label class="btn secondary file">استيراد ملف JSON<input id="importFile" type="file" accept=".json,application/json"></label><button class="btn secondary" id="exportCatalog">تصدير catalog.json</button><button class="btn" id="exportPack">تصدير حزمة استوديو نور</button><button class="btn secondary" id="reset">استعادة المكتبة المنشورة</button></div>
+    <p id="status" class="status" role="status" aria-live="polite">جارٍ تحميل مكتبة المناهج…</p>
+    <p class="notice"><strong>تنبيه:</strong> التغييرات هنا محفوظة في هذا المتصفح فقط. لا ترفع الصفحة التعديلات إلى GitHub ولا تنشرها للمعلمين. راجع الحزمة وادمجها في <code>content/catalog.json</code> ثم أنشئ إصدارًا جديدًا.</p>
+    <section class="stats" aria-label="إحصاءات المحتوى"><div class="stat"><span>المناهج</span><strong id="nCourses">—</strong></div><div class="stat"><span>الوحدات</span><strong id="nUnits">—</strong></div><div class="stat"><span>الدروس</span><strong id="nLessons">—</strong></div><div class="stat"><span>اللقاءات</span><strong id="nMeetings">—</strong></div></section>
+    <section class="filters"><select id="gradeFilter" aria-label="تصفية حسب الصف"><option value="all">جميع الصفوف</option></select><input id="search" type="search" placeholder="ابحث عن منهج أو وحدة أو درس" aria-label="بحث في المكتبة"></section>
+    <section id="courses" class="courses" aria-live="polite"></section>
+    <p class="foot">المكتبة مصدرها <a href="https://github.com/activitiesclass/noor-learning-studio/tree/main/content">content/catalog.json</a>. تعديلات المعلم على تحضير نور تبقى داخل جلسته، ولا تُرفع إلى هذه المكتبة.</p>
+  </main>
+  <script src="extension/core.js"></script><script src="admin.js"></script>
+</body>
+</html>
