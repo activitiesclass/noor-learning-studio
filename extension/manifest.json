@@ -14,7 +14,7 @@
     ]
   },
   "browser_action": {
-    "default_title": "استوديو نور — التحاضير"
+    "default_title": "استوديو نور | منتجات رقمية"
   },
   "content_scripts": [
     {
